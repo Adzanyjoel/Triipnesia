@@ -1,0 +1,3236 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triipnesia - Jelajahi Keindahan Lampung</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0x0ug8rZ6eXv/oK2z+fKz+oA6P5+A6c4x+r0Gv/K6I6A7Bw+n5+w5+r6w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth; /* Smooth scrolling for internal links */
+        overflow-x: hidden; /* Prevent horizontal scroll */
+      }
+      /* Custom scrollbar for a modern look */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      /* Hero section background image with overlay */
+      .hero-section {
+        background-image: url("https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80"); /* Placeholder image */
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+      }
+      /* Hide all pages initially except for home */
+      .page-section:not(#home) {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg fixed w-full z-50 top-0">
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <!-- Logo -->
+        <div class="flex items-center">
+          <img src="img/logo.jpg" alt="Logo Triipnesia" class="h-12 w-auto" />
+          <span class="ml-3 text-xl font-bold text-blue-500">Triipnesia</span>
+        </div>
+
+        <!-- Mobile Menu Button (Hamburger) -->
+        <div class="md:hidden">
+          <button
+            id="mobile-menu-button"
+            class="text-gray-800 hover:text-indigo-700 focus:outline-none focus:text-indigo-700"
+          >
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#home"
+            class="text-gray-800 hover:text-indigo-700 transition duration-300 font-medium"
+            onclick="showPage('home')"
+            >Beranda</a
+          >
+          <a
+            href="#destinations"
+            class="text-gray-800 hover:text-indigo-700 transition duration-300 font-medium"
+            onclick="showPage('destinations')"
+            >Destinasi</a
+          >
+          <a
+            href="#faq-section"
+            class="text-gray-800 hover:text-indigo-700 transition duration-300 font-medium"
+            onclick="showPage('faq-section')"
+            >FAQ</a
+          >
+          <a
+            href="#contact-footer"
+            class="text-gray-800 hover:text-indigo-700 transition duration-300 font-medium"
+            onclick="showPage('home')"
+            >Kontak</a
+          >
+          <!-- Scroll to footer on home page -->
+        </div>
+      </div>
+
+      <!-- Mobile Menu (Hidden by default) -->
+      <div id="mobile-menu" class="md:hidden hidden bg-white py-2 shadow-inner">
+        <a
+          href="#home"
+          class="block px-6 py-2 text-gray-800 hover:bg-gray-100 transition duration-300"
+          onclick="showPage('home'); toggleMobileMenu()"
+          >Beranda</a
+        >
+        <a
+          href="#destinations"
+          class="block px-6 py-2 text-gray-800 hover:bg-gray-100 transition duration-300"
+          onclick="showPage('destinations'); toggleMobileMenu()"
+          >Destinasi</a
+        >
+        <a
+          href="#faq-section"
+          class="block px-6 py-2 text-gray-800 hover:bg-gray-100 transition duration-300"
+          onclick="showPage('faq-section'); toggleMobileMenu()"
+          >FAQ</a
+        >
+        <a
+          href="#contact-footer"
+          class="block px-6 py-2 text-gray-800 hover:bg-gray-100 transition duration-300"
+          onclick="showPage('home'); toggleMobileMenu()"
+          >Kontak</a
+        >
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="pt-20">
+      <!-- Padding top to account for fixed nav bar -->
+
+      <!-- Beranda (Homepage) Section -->
+      <section id="home" class="page-section">
+        <!-- Hero Section -->
+        <div
+          class="hero-section text-white text-center py-20 md:py-32 relative flex items-center justify-center min-h-screen"
+        >
+          <div class="relative z-10 px-4">
+            <h1
+              class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg animate-fade-in-up"
+            >
+              Jelajahi Keindahan Lampung Bersama Triipnesia
+            </h1>
+            <p
+              class="text-lg md:text-xl mb-8 opacity-90 drop-shadow-md animate-fade-in-up delay-200"
+            >
+              Temukan petualangan impian Anda, dari pantai eksotis hingga danau
+              yang tenang.
+            </p>
+            <button
+              class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
+              onclick="showPage('destinations')"
+            >
+              Lihat Destinasi <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- About Us Section -->
+        <section class="py-16 bg-white">
+          <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-6">
+              Mengapa Memilih Triipnesia?
+            </h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              Triipnesia hadir untuk memberikan pengalaman liburan yang tak
+              terlupakan di Lampung. Kami menawarkan paket perjalanan lengkap
+              dengan harga terbaik dan pelayanan profesional. Kami percaya
+              setiap perjalanan adalah cerita yang berharga dan kami siap
+              membantu Anda menciptakan petualangan terbaik Anda.
+            </p>
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div
+                class="bg-indigo-50 p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300"
+              >
+                <i class="fas fa-heart text-5xl text-indigo-600 mb-4"></i>
+                <h3 class="text-xl font-semibold text-indigo-700 mb-2">
+                  Pelayanan Terbaik
+                </h3>
+                <p class="text-gray-600">
+                  Kepuasan Anda adalah prioritas kami. Tim profesional siap
+                  membantu.
+                </p>
+              </div>
+              <div
+                class="bg-indigo-50 p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300"
+              >
+                <i class="fas fa-wallet text-5xl text-indigo-600 mb-4"></i>
+                <h3 class="text-xl font-semibold text-indigo-700 mb-2">
+                  Harga Bersahabat
+                </h3>
+                <p class="text-gray-600">
+                  Paket perjalanan lengkap dengan harga yang kompetitif.
+                </p>
+              </div>
+              <div
+                class="bg-indigo-50 p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300"
+              >
+                <i class="fas fa-globe-asia text-5xl text-indigo-600 mb-4"></i>
+                <h3 class="text-xl font-semibold text-indigo-700 mb-2">
+                  Destinasi Menawan
+                </h3>
+                <p class="text-gray-600">
+                  Jelajahi keindahan tersembunyi Lampung bersama kami.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Destinations Section -->
+        <section class="py-16 bg-gray-100">
+          <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-12">
+              Destinasi Unggulan Kami
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Destination Card 1 -->
+              <div
+                class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300"
+              >
+                <img
+                  src="img/pulau pahawang/Banner & Logo Pulau Pahawang.jpg"
+                  alt="Pulau Pahawang"
+                  class="w-full h-56 object-cover"
+                />
+                <div class="p-6">
+                  <h3 class="text-2xl font-semibold text-indigo-700 mb-3">
+                    Pulau Pahawang
+                  </h3>
+                  <p class="text-gray-600 mb-4">
+                    Surga tersembunyi dengan keindahan bawah laut yang
+                    menakjubkan dan ikonik Pasir Timbul.
+                  </p>
+                  <p class="text-indigo-600 font-bold mb-4">
+                    Mulai dari Rp. 150.000 /Orang
+                  </p>
+                  <button
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
+                    onclick="showPage('pahawang-detail')"
+                  >
+                    Lihat Detail
+                    <i class="fas fa-chevron-right text-sm ml-1"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- Destination Card 2 -->
+              <div
+                class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300"
+              >
+                <img
+                  src="https://placehold.co/600x400/818CF8/FFFFFF?text=Kiluan+Dolphin"
+                  alt="Kiluan Dolphin"
+                  class="w-full h-56 object-cover"
+                />
+                <div class="p-6">
+                  <h3 class="text-2xl font-semibold text-indigo-700 mb-3">
+                    Kiluan Dolphin
+                  </h3>
+                  <p class="text-gray-600 mb-4">
+                    Saksikan tarian lumba-lumba liar di habitat aslinya yang
+                    menakjubkan.
+                  </p>
+                  <p class="text-indigo-600 font-bold mb-4">
+                    Mulai dari Rp. 400.000/orang
+                  </p>
+                  <button
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
+                    onclick="showPage('kiluan-detail')"
+                  >
+                    Lihat Detail
+                    <i class="fas fa-chevron-right text-sm ml-1"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- Destination Card 3 -->
+              <div
+                class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300"
+              >
+                <img
+                  src="https://placehold.co/600x400/818CF8/FFFFFF?text=Danau+Ranau"
+                  alt="Danau Ranau"
+                  class="w-full h-56 object-cover"
+                />
+                <div class="p-6">
+                  <h3 class="text-2xl font-semibold text-indigo-700 mb-3">
+                    Danau Ranau
+                  </h3>
+                  <p class="text-gray-600 mb-4">
+                    Danau terbesar kedua di Sumatera dengan pemandangan alam
+                    yang asri dan sejuk.
+                  </p>
+                  <p class="text-indigo-600 font-bold mb-4">
+                    Mulai dari Rp. 600.000/orang
+                  </p>
+                  <button
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
+                    onclick="showPage('danau-ranau-detail')"
+                  >
+                    Lihat Detail
+                    <i class="fas fa-chevron-right text-sm ml-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Testimonial Section (Homepage) -->
+        <section class="py-16 bg-white">
+          <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-12">
+              Apa Kata Mereka?
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div
+                class="bg-indigo-50 p-8 rounded-xl shadow-lg flex flex-col items-center text-center"
+              >
+                <img
+                  src="https://placehold.co/100x100/F5F5F5/818CF8?text=AV"
+                  alt="Avatar Pelanggan 1"
+                  class="rounded-full w-24 h-24 mb-4 object-cover border-4 border-indigo-200"
+                />
+                <p class="text-gray-700 italic mb-4">
+                  "Perjalanan ke Pahawang bersama Triipnesia sangat luar biasa!
+                  Pemandu ramah dan semua fasilitas lengkap. Sangat
+                  direkomendasikan!"
+                </p>
+                <p class="font-semibold text-indigo-700">- Rina, Jakarta</p>
+              </div>
+              <div
+                class="bg-indigo-50 p-8 rounded-xl shadow-lg flex flex-col items-center text-center"
+              >
+                <img
+                  src="https://placehold.co/100x100/F5F5F5/818CF8?text=AV"
+                  alt="Avatar Pelanggan 2"
+                  class="rounded-full w-24 h-24 mb-4 object-cover border-4 border-indigo-200"
+                />
+                <p class="text-gray-700 italic mb-4">
+                  "Melihat lumba-lumba di Kiluan adalah pengalaman hidup!
+                  Triipnesia mengurus semuanya dengan sempurna. Terima kasih!"
+                </p>
+                <p class="font-semibold text-indigo-700">- Budi, Bandung</p>
+              </div>
+              <div
+                class="bg-indigo-50 p-8 rounded-xl shadow-lg flex flex-col items-center text-center"
+              >
+                <img
+                  src="https://placehold.co/100x100/F5F5F5/818CF8?text=AV"
+                  alt="Avatar Pelanggan 3"
+                  class="rounded-full w-24 h-24 mb-4 object-cover border-4 border-indigo-200"
+                />
+                <p class="text-gray-700 italic mb-4">
+                  "Danau Ranau sangat indah dan menenangkan. Paket dari
+                  Triipnesia sangat sesuai dengan keinginan kami. Pasti akan
+                  kembali!"
+                </p>
+                <p class="font-semibold text-indigo-700">- Siti, Yogyakarta</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="py-20 bg-indigo-700 text-white text-center">
+          <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+              Siap Merencanakan Petualangan Anda Selanjutnya?
+            </h2>
+            <p class="text-lg mb-8 opacity-90">
+              Hubungi kami sekarang untuk mendapatkan penawaran terbaik dan
+              paket kustom.
+            </p>
+            <a
+              href="https://wa.me/6281270919808?text=Hallo%20kak%20salam%20kenal.%20Mau%20Pesan%20Paket%20Custom%20Trip%20Wisata%20Lampung%20Bisa%20Kak^_^?"
+              target="_blank"
+              class="bg-white text-indigo-700 hover:bg-gray-200 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
+            >
+              Hubungi Kami <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </section>
+      </section>
+
+      <!-- Destinasi (All Destinations) Section -->
+      <section id="destinations" class="page-section py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-indigo-800 text-center mb-12">
+            Semua Destinasi Kami
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Destination Card: Pulau Pahawang Start -->
+            <div
+              class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300"
+            >
+              <!-- Img 600x400 -->
+              <img
+                src="img/pulau pahawang/Banner & Logo Pulau Pahawang.jpg"
+                alt="Pulau Pahawang Lampung"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-semibold text-indigo-700 mb-3">
+                  Pulau Pahawang, Lampung
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Surga tersembunyi dengan keindahan bawah laut yang menakjubkan
+                  dan ikonik Pasir Timbul.
+                </p>
+                <p class="text-indigo-600 font-bold mb-4">
+                  Mulai dari Rp. 150.000 /Orang
+                </p>
+                <button
+                  class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
+                  onclick="showPage('pahawang-detail')"
+                >
+                  Lihat Detail <i class="fas fa-chevron-right text-sm ml-1"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Destination Card: Pulau Pahawang End -->
+
+            <!-- Destination Card: Pulau Tegal Mas Start -->
+            <div
+              class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300"
+            >
+              <img
+                src="https://placehold.co/600x400/818CF8/FFFFFF?text=Pulau+Tegal+Mas"
+                alt="Pulau Tegal Mas Lampung"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-semibold text-indigo-700 mb-3">
+                  Pulau Tegal Mas Lampung
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Resort ala Maldives dengan jembatan kayu estetik dan spot foto
+                  Instagramable.
+                </p>
+                <p class="text-indigo-600 font-bold mb-4">
+                  Mulai dari Rp. 450.000/orang
+                </p>
+                <button
+                  class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
+                  onclick="showPage('tegal-mas-detail')"
+                >
+                  Lihat Detail <i class="fas fa-chevron-right text-sm ml-1"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Destination Card: Pulau Tegal Mas End -->
+
+            <!-- Destination Card: Pulau Wayang Start-->
+            <div
+              class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300"
+            >
+              <img
+                src="https://placehold.co/600x400/818CF8/FFFFFF?text=Pulau+Wayang"
+                alt="Pulau Wayang Lampung"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-semibold text-indigo-700 mb-3">
+                  Pulau Wayang Lampung
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Keindahan alam bawah laut yang masih perawan, cocok untuk
+                  diving dan snorkeling.
+                </p>
+                <p class="text-indigo-600 font-bold mb-4">
+                  Mulai dari Rp. 380.000/orang
+                </p>
+                <button
+                  class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
+                  onclick="showPage('wayang-detail')"
+                >
+                  Lihat Detail <i class="fas fa-chevron-right text-sm ml-1"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Destination Card: Pulau Wayang End-->
+
+            <!-- Destination Card: Kiluan Dolphin Start -->
+            <div
+              class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300"
+            >
+              <img
+                src="https://placehold.co/600x400/818CF8/FFFFFF?text=Kiluan+Dolphin"
+                alt="Kiluan Dolphin Lampung"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-semibold text-indigo-700 mb-3">
+                  Kiluan Dolphin Lampung
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Saksikan tarian lumba-lumba liar di habitat aslinya yang
+                  menakjubkan.
+                </p>
+                <p class="text-indigo-600 font-bold mb-4">
+                  Mulai dari Rp. 400.000/orang
+                </p>
+                <button
+                  class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
+                  onclick="showPage('kiluan-detail')"
+                >
+                  Lihat Detail <i class="fas fa-chevron-right text-sm ml-1"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Destination Card: Kiluan Dolphin End -->
+
+            <!-- Destination Card: Pesisir Barat Start -->
+            <div
+              class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300"
+            >
+              <img
+                src="https://placehold.co/600x400/818CF8/FFFFFF?text=Pesisir+Barat"
+                alt="Pesisir Barat Lampung"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-semibold text-indigo-700 mb-3">
+                  Pesisir Barat Lampung
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Surga para peselancar dengan ombak kelas dunia dan keindahan
+                  pantai yang eksotis.
+                </p>
+                <p class="text-indigo-600 font-bold mb-4">
+                  Mulai dari Rp. 700.000/orang
+                </p>
+                <button
+                  class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
+                  onclick="showPage('pesisir-barat-detail')"
+                >
+                  Lihat Detail <i class="fas fa-chevron-right text-sm ml-1"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Destination Card: Pesisir Barat End -->
+
+            <!-- Destination Card: Danau Ranau Start-->
+            <div
+              class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition duration-300"
+            >
+              <img
+                src="https://placehold.co/600x400/818CF8/FFFFFF?text=Danau+Ranau"
+                alt="Danau Ranau Lampung Barat"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-2xl font-semibold text-indigo-700 mb-3">
+                  Danau Ranau Lampung Barat
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Danau terbesar kedua di Sumatera dengan pemandangan alam yang
+                  asri dan sejuk.
+                </p>
+                <p class="text-indigo-600 font-bold mb-4">
+                  Mulai dari Rp. 600.000/orang
+                </p>
+                <button
+                  class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
+                  onclick="showPage('danau-ranau-detail')"
+                >
+                  Lihat Detail <i class="fas fa-chevron-right text-sm ml-1"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Destination Card: Danau Ranau End-->
+          </div>
+        </div>
+      </section>
+
+      <!-- Detailed Destination Pages (Hidden by default, shown by JS) -->
+
+      <!-- Pulau Pahawang Detail Page -->
+      <section id="pahawang-detail" class="page-section py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <button
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full mb-8 transition duration-300"
+            onclick="showPage('destinations')"
+          >
+            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Destinasi
+          </button>
+          <h1 class="text-4xl font-bold text-indigo-800 text-center mb-8">
+            Pulau Pahawang, Lampung
+          </h1>
+
+          <!-- Hero Image/Banner -->
+          <div class="w-full h-96 rounded-xl overflow-hidden shadow-lg mb-12">
+            <!-- img 1200x600 -->
+            <img
+              src="img/pulau pahawang/Banner & Logo Pulau Pahawang.jpg"
+              alt="Pulau Pahawang Banner"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Overview -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-4">
+              Pesona Bawah Laut Pulau Pahawang
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Pulau Pahawang terkenal dengan keindahan terumbu karang dan spot
+              snorkeling yang luar biasa. Nikmati keindahan biota laut yang
+              beragam dan jembatan ikonik di sekitar pulau. Pulau ini menawarkan
+              pengalaman liburan yang sempurna bagi pecinta alam bawah laut.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              Anda akan menemukan spot-spot snorkeling menakjubkan seperti Taman
+              Nemo, yang dihuni oleh ribuan ikan badut, serta keindahan Pasir
+              Timbul yang muncul saat air surut.
+            </p>
+          </div>
+
+          <!-- Paket Lengkap One Day Start-->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Pilihan Paket Wisata Pahawang Trip One Day Executive
+            </h2>
+            <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+              <i class="fas fa-map-pin text-2xl text-indigo-500"></i>
+              Pulau Pahawang Besar, Pulau Pahawang Kecil, Pulau Kelagian Kecil,
+              Jembatan Pasir Pahawang, Snorkeling Taman Nemo Dan Cukuh Bedil.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Paket 1 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Paket Open Pahawang Trip 1 Day
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-3xl mb-4">
+                  Rp. 150.000<span class="text-xl font-normal">/orang</span>
+                </p>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  <i class="fas fa-map-pin text-1xl text-indigo-500"></i>
+                  Meeting Point Dermaga Ketapang 08.30 WIB
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <p>
+                    Paket Open Trip ialah jenis paket yang dilaksanakan dengan
+                    dicampur dengan peserta lain. Paket ini Merupakan Solusi
+                    bagi anda yang ingin melakukan Trip Dengan peserta yg
+                    berjumlah sedikit namun ingin mendapatkan harga yang
+                    ekonomis
+                  </p>
+                  <li>Start Pelabuhan Bakauheni = Rp. 300.000 /Orang</li>
+                  <li>Meeting Pelabuhan Bakauheni 06.00 WIB</li>
+                  <li>Start Stasiun Tj. Karang = Rp. 250.000 /Orang</li>
+                  <li>Meeting Tj. Karang 08.00 WIB</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  <a
+                    href="https://wa.me/6282256207235?text=Hallo%20kak%20salam%20kenal.%20Mau%20Pesan%20Pahawang%20Open%20Trip%201Day%20Nya%20Dong%20Kak^_^"
+                    target="_blank"
+                    >Pesan Paket Ini</a
+                  >
+                </button>
+              </div>
+              <!-- Paket 2 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Paket Private Pahawang Trip 1 Day
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  <i class="fas fa-map-pin text-1xl text-indigo-500"></i>
+                  Meeting Point Dermaga Ketapang 08.30 Wib
+                </p>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  Price List Private Pahawang Trip 1 Day :
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>2 Orang = Rp. 750.000 /Orang</li>
+                  <li>3 Orang = Rp. 525.000 /Orang</li>
+                  <li>4 Orang = Rp. 430.000 /Orang</li>
+                  <li>5 Orang = Rp. 330.000 /Orang</li>
+                  <li>6 Orang = Rp. 310.000 /Orang</li>
+                  <li>7 Orang = Rp. 300.000 /Orang</li>
+                  <li>8 Orang = Rp. 250.000 /Orang</li>
+                  <li>9 Orang = Rp. 230.000 /Orang</li>
+                  <li>10 - 12 Orang = Rp. 210.000 /Orang</li>
+                  <li>13 - 15 Orang = Rp. 200.000 /Orang</li>
+                  <li>16 - 20 Orang = Rp. 185.000 /Orang</li>
+                  <li>21 - 40 Orang = Rp. 180.000 /Orang</li>
+                  <li>41 - 60 Orang = Rp. 150.000 /Orang</li>
+                  <li>61 Orang Dst = Rp. 130.000 /Orang</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  <a
+                    href="https://wa.me/6282256207235?text=Hallo%20kak%20salam%20kenal.%20Mau%20Pesan%20Pahawang%20Private%20Trip%201Day%20Nya%20Dong%20Kak^_^"
+                    target="_blank"
+                    >Pesan Paket Ini</a
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fasilitas -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Fasilitas yang Termasuk
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-ship text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Kapal Eksplore Pulau Dan Spot Snorkling
+                </p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-mask text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Alat Snorkeling lengkap (Mask, Snorkel, Pelampung)
+                </p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-ticket text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Tiket Masuk Pulau Maupun Spot Snorkeling
+                </p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-utensils text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Makan 1 Kali Prasmanan</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-wine-bottle text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Air Mineral</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-camera text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Camera Underwater</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-camera text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Dokumentasi Underwater & Upwater (foto & video)
+                </p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-walking text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Pemandu Lokal Berpengalaman</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-kit-medical text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">P3K</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-ticket-simple text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Free Banner Kegiatan Khusus Private Trip (>30 Orang)
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Exlude Fasilitas -->
+          <div
+            class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+          >
+            <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+              Exclude Fasilitas
+            </h3>
+            <ul class="list-disc text-sm list-inside text-gray-700 mb-6">
+              <li>Retribusi Masuk Pulau Pahawang (PAD) Rp. 10.000 /Orang</li>
+              <li>Makan Diluar Jadwal</li>
+              <li>
+                Kendaraan Menuju MP Dermaga Ketapang (Rp. 450.000 / Mobil Jika
+                Tamu Minta Jemput)
+              </li>
+              <li>Team Building Games (Rp. 2.500.000)</li>
+              <li>Dokumentasi Drone (Rp. 1.250.000 /Hari)</li>
+              <li>Barbeque (Rp. 80.000 /Orang)</li>
+              <li>Water Sport Banana Boat (Rp. 30.000)</li>
+              <li>Water Sport Donat Boat (Rp. 35.000)</li>
+              <li>Parkir Mobil (Rp. 30.000 - Rp. 50.000 /Orang)</li>
+            </ul>
+          </div>
+
+          <!-- Rencana Perjalanan One Day -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Rencana Perjalanan (One Day Trip)
+            </h2>
+            <ol class="relative border-l border-indigo-200 ml-4 md:ml-0">
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-map-pin text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  09:00 WIB
+                  <span
+                    class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-3"
+                    >Titik Kumpul (Dermaga Ketapang)</span
+                  >
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Pembagian alat snorkling Dan Persiapan Keberangkatan
+                </p>
+              </li>
+
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  09:00 - 10:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan Menuju Cukuh Bedil
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-mask text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  09:45 - 11:15 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Snorkeling Di Spot Cukuh Bedil
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  11:15 - 11:30 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan Menuju Pulau Pahawang Besar
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-utensils text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  11:30 - 13:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  ISHOMA Di Pulau Pahawang Besar
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  13:00 - 13:15 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan Menuju Spot Taman Nemo
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-mask text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  13:15 - 14:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Snorkling Di Spot Taman Nemo
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  14:00 - 14:15 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan Menuju Pulau Pahawang Kecil
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-camera text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  14:15 - 15:15 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Water Sport + bersantai (Foto-foto) di Pulau Pahawang Kecil
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  15:15 - 15:30 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan menuju pulau kelagian kecil
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-umbrella-beach text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  15:30 - 16:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Bersantai di pulau kelagian kecil
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  16:00 - 16:30 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan pulang ke dermaga ketapang
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-walking text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  16:30 - 17:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Bersalin Dan Persiapan Untuk pulang
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-car-side text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  17:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Kembali Menuju MP Masing-Masing, Sayonaraaaa
+                </p>
+              </li>
+            </ol>
+          </div>
+          <!-- Paket Lengkap One Day End-->
+
+          <!-- Paket Lengkap 2 Day One Night Start -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Pilihan Paket Wisata Pahawang Trip Executive 2 Day 1 Night
+            </h2>
+            <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+              <i class="fas fa-map-pin text-2xl text-indigo-500"></i>
+              Pulau Pahawang Besar, Pulau Pahawang Kecil, Pulau Kelagian Kecil,
+              Jembatan Pasir Pahawang, Snorkeling Taman Nemo Dan Cukuh Bedil.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Paket 1 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Price List Paket Private Trip 2Day 1Night Pulau Pahawang
+                  Lampung - Homestay (Non Ac)
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  <i class="fas fa-map-pin text-1xl text-indigo-500"></i>
+                  Meeting Point Dermaga Ketapang
+                </p>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  Dengan Kapasitas 1 Homestay Max 15 Orang
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>2 Orang = Rp. 1.800.000/orang</li>
+                  <li>3 Orang = Rp. 1.280.000/orang</li>
+                  <li>4 Orang = Rp. 975.000/orang</li>
+                  <li>5 Orang = Rp. 820.000/orang</li>
+                  <li>6 Orang = Rp. 740.000/orang</li>
+                  <li>7 Orang = Rp. 630.000/orang</li>
+                  <li>8 Orang = Rp. 585.000/orang</li>
+                  <li>9 Orang = Rp. 535.000/orang</li>
+                  <li>10-12 Orang = Rp. 480.000/orang</li>
+                  <li>13-14 Orang = Rp. 450.000/orang</li>
+                  <li>15-20 Orang = Rp. 420.000/orang</li>
+                  <li>21-40 Orang = Rp. 380.000/orang</li>
+                  <li>41-60 Orang = Rp. 345.000/orang</li>
+                  <li>61 Orang dst= Rp. 310.000/orang</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 mb-6 rounded-full transition duration-300"
+                >
+                  <a
+                    href="https://drive.google.com/folderview?id=1-Aq1DijdZwRtBVE1ych9iSyctIdL4K_6"
+                    target="_blank"
+                    >Detail Foto Homestay (Non Ac)</a
+                  >
+                </button>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  <a
+                    href="https://wa.me/6282256207235?text=Hallo%20kak%20salam%20kenal.%20Mau%20Pesan%20Paket%20Pahawang%20Private%20Trip%202D1N%20Homestay%20Nya%20Dong%20Kak%20^_^"
+                    target="_blank"
+                    >Pesan Paket Ini</a
+                  >
+                </button>
+              </div>
+              <!-- Paket 2 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Price List Paket Private Trip 2Day 1Night Pulau Pahawang
+                  Lampung - Villa Adat Panggung (Ac)
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  <i class="fas fa-map-pin text-1xl text-indigo-500"></i>
+                  Meeting Point Dermaga Ketapang
+                </p>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  Dengan Kapasitas 1 Villa Max 20 Orang
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>2 Orang = Rp. 2.550.000/orang</li>
+                  <li>3 Orang = Rp. 1.800.000/orang</li>
+                  <li>4 Orang = Rp. 1.350.000/orang</li>
+                  <li>5 Orang = Rp. 1.150.000/orang</li>
+                  <li>6 Orang = Rp. 1.100.000/orang</li>
+                  <li>7 Orang = Rp. 950.000/orang</li>
+                  <li>8 Orang = Rp. 850.000/orang</li>
+                  <li>9 Orang = Rp. 780.000/orang</li>
+                  <li>10-12 Orang = Rp. 730.000/orang</li>
+                  <li>13-14 Orang = Rp. 650.000/orang</li>
+                  <li>15-20 Orang = Rp. 580.000/orang</li>
+                  <li>21-40 Orang = Rp. 550.000/orang</li>
+                  <li>41-60 Orang = Rp. 530.000/orang</li>
+                  <li>61 Orang dst= Rp. 525.000/orang</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 mb-6 rounded-full transition duration-300"
+                >
+                  <a
+                    href="https://drive.google.com/folderview?id=1Ymh-oZYAupLdgIQN3wTcI3qyDd8y1zcW"
+                    target="_blank"
+                    >Detail Foto Villa Adat Panggung</a
+                  >
+                </button>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  <a
+                    href="https://wa.me/6282256207235?text=Hallo%20kak%20salam%20kenal.%20Mau%20Pesan%20Paket%20Pahawang%20Private%20Trip%202D1N%20Villa%20Adat%20Panggung%20Nya%20Dong%20Kak%20^_^"
+                    target="_blank"
+                    >Pesan Paket Ini</a
+                  >
+                </button>
+              </div>
+              <!-- Paket 3 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Price List Paket Private Trip 2Day 1Night Pulau Pahawang
+                  Lampung - Villa Lombok Apung / Andreas Resort (Ac)
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  <i class="fas fa-map-pin text-1xl text-indigo-500"></i>
+                  Meeting Point Dermaga Ketapang
+                </p>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  Dengan Kapasitas 1 Villa Max 8 Orang
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>2 Orang = Rp. 3.650.000/orang</li>
+                  <li>3 Orang = Rp. 2.500.000/orang</li>
+                  <li>4 Orang = Rp. 2.050.000/orang</li>
+                  <li>5 Orang = Rp. 1.800.000/orang</li>
+                  <li>6 Orang = Rp. 1.500.000/orang</li>
+                  <li>7 Orang = Rp. 1.350.000/orang</li>
+                  <li>8 Orang = Rp. 1.200.000/orang</li>
+                  <li>9 Orang = Rp. 1.150.000/orang</li>
+                  <li>10-12 Orang = Rp. 1.350.000/orang</li>
+                  <li>13-14 Orang = Rp. 1.300.000/orang</li>
+                  <li>15-16 Orang = Rp. 1.100.00/orang</li>
+                  <li>17-24 Orang = Rp. 950.000/orang</li>
+                  <li>25-33 Orang = Rp. 900.000/orang</li>
+                  <li>34-40 Orang = Rp. 980.000/orang</li>
+                  <li>42 Orang Dst = Rp. 840.000/orang</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  <a
+                    href="https://wa.me/6282256207235?text=Hallo%20kak%20salam%20kenal.%20Mau%20Pesan%20Paket%20Pahawang%20Private%20Trip%202D1N%20Villa%20Lombok%20Apung%20Nya%20Dong%20Kak%20^_^"
+                    target="_blank"
+                    >Pesan Paket Ini</a
+                  >
+                </button>
+              </div>
+              <!-- Paket 4 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Price List Paket Private Trip 2Day 1Night Pulau Pahawang
+                  Lampung - La Nadiya Villa and Beach Club (Ac)
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  <i class="fas fa-map-pin text-1xl text-indigo-500"></i>
+                  Meeting Point Dermaga Ketapang
+                </p>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  Dengan Kapasitas 1 Villa Max 40 Orang
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>2 Orang = Rp. 4.600.000/orang</li>
+                  <li>3 Orang = Rp. 3.200.000/orang</li>
+                  <li>4 Orang = Rp. 2.450.000/orang</li>
+                  <li>5 Orang = Rp. 1.950.000/orang</li>
+                  <li>6 Orang = Rp. 1.700.000/orang</li>
+                  <li>7 Orang = Rp. 1.550.000/orang</li>
+                  <li>8 Orang = Rp. 1.300.000/orang</li>
+                  <li>9 Orang = Rp. 1.250.000/orang</li>
+                  <li>10-12 Orang = Rp. 1.200.000/orang</li>
+                  <li>13-14 Orang = Rp. 1.150.000/orang</li>
+                  <li>15-20 Orang = Rp. 1.000.000/orang</li>
+                  <li>21-40 Orang = Rp. 900.000/orang</li>
+                  <li>41-60 Orang = Rp. 850.000/orang</li>
+                  <li>61 Orang dst= Rp. 700.000/orang</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 mb-6 rounded-full transition duration-300"
+                >
+                  <a
+                    href="https://drive.google.com/folderview?id=1-Aq1DijdZwRtBVE1ych9iSyctIdL4K_6"
+                    target="_blank"
+                    >Detail Foto La Nadiya Villa and Beach Club</a
+                  >
+                </button>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  <a
+                    href="https://wa.me/6282256207235?text=Hallo%20kak%20salam%20kenal.%20Mau%20Pesan%20Paket%20Pahawang%20Private%20Trip%202D1N%20La%20Nadiya%20Villa%20And%20Beach%20Club%20Nya%20Dong%20Kak%20^_^"
+                    target="_blank"
+                    >Pesan Paket Ini</a
+                  >
+                </button>
+              </div>
+              <!-- Paket 5 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Price List Paket Private Trip 2Day 1Night Pulau Pahawang
+                  Lampung - Villa Green Bay / Tanjung Putus (Ac)
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  <i class="fas fa-map-pin text-1xl text-indigo-500"></i>
+                  Meeting Point Dermaga Ketapang
+                </p>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  Dengan Kapasitas 1 Villa Max 8 Orang
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>2 Orang = Rp. 3.680.000/orang</li>
+                  <li>3 Orang = Rp. 2.595.000/orang</li>
+                  <li>4 Orang = Rp. 2.000.000/orang</li>
+                  <li>5 Orang = Rp. 1.710.000/orang</li>
+                  <li>6 Orang = Rp. 1.510.000/orang</li>
+                  <li>7 Orang = Rp. 1.360.000/orang</li>
+                  <li>8 Orang = Rp. 1.280.000orang</li>
+                  <li>9 Orang = Rp. 1.255.000/orang</li>
+                  <li>10-12 Orang = Rp. 1.210.000/orang</li>
+                  <li>13-14 Orang = Rp. 1.160.000/orang</li>
+                  <li>15-20 Orang = Rp. 1.000.000/orang</li>
+                  <li>21-40 Orang = Rp. 955.000/orang</li>
+                  <li>41-60 Orang = Rp. 885.000/orang</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  <a
+                    href="https://wa.me/6282256207235?text=Hallo%20kak%20salam%20kenal.%20Mau%20Pesan%20Paket%20Pahawang%20Private%20Trip%202D1N%20Villa%20Green%20Bay%20/%20Tanjung%20Putus%20Nya%20Dong%20Kak%20^_^"
+                    target="_blank"
+                    >Pesan Paket Ini</a
+                  >
+                </button>
+              </div>
+              <!-- Paket 6 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Price List Paket Private Trip 2Day 1Night Pulau Pahawang
+                  Lampung - Villa Apung Bangka
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-1xl mb-4">
+                  <i class="fas fa-map-pin text-1xl text-indigo-500"></i>
+                  Meeting Point Dermaga Ketapang
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>2 Orang = Rp. 4.050.000/orang</li>
+                  <li>3 Orang = Rp. 3.200.000/orang</li>
+                  <li>4 Orang = Rp. 2.500.000/orang</li>
+                  <li>5 Orang = Rp. 2.200.000/orang</li>
+                  <li>6 Orang = Rp. 1.800.000/orang</li>
+                  <li>7 Orang = Rp. 1.750.000/orang</li>
+                  <li>8 Orang = Rp. 1.700.000/orang</li>
+                  <li>9 Orang = Rp. 1.600.000/orang</li>
+                  <li>10 Orang = Rp. 1.450.000/orang</li>
+                  <li>11-12 Orang = Rp. 1.300.000/orang</li>
+                  <li>13-14 Orang = Rp. 1.250.000/orang</li>
+                  <li>15-16 Orang = Rp. 1.200.000/orang</li>
+                  <li>17-20 Orang = Rp. 1.100.000/orang</li>
+                  <li>20-30 Orang dst= Rp. 1.000.000/orang</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 mb-6 rounded-full transition duration-300"
+                >
+                  <a
+                    href="https://drive.google.com/folderview?id=1-Ihd1Slj2wDLXGBRyEMkMGJbTixKUGZ2"
+                    target="_blank"
+                    >Detail Foto Villa Apung Bangka</a
+                  >
+                </button>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  <a
+                    href="https://wa.me/6282256207235?text=Hallo%20kak%20salam%20kenal.%20Mau%20Pesan%20Paket%20Pahawang%20Private%20Trip%202D1N%20Villa%20Apung%20Bangka%20Nya%20Dong%20Kak%20^_^"
+                    target="_blank"
+                    >Pesan Paket Ini</a
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fasilitas 2D1N -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Fasilitas yang Termasuk
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-ship text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Kapal Eksplore Pulau Dan Spot Snorkling
+                </p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-house text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Penginapan</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-mask text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Alat Snorkeling lengkap (Mask, Snorkel, Pelampung, Fin/Kaki
+                  Katak)
+                </p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-ticket text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Tiket Masuk Pulau Maupun Spot Snorkeling
+                </p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-utensils text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Makan 4 Kali Prasmanan</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-wine-bottle text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Air Mineral</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-camera text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Camera Underwater</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-camera text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Dokumentasi Underwater & Upwater (foto & video)
+                </p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-walking text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Pemandu Lokal Berpengalaman</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-kit-medical text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">P3K</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-square-parking text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Parkir Kendaraan Di Kantor</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fasilitas Villa 2D1N -->
+          <div
+            class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+          >
+            <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+              Fasilitas Didalam Villa
+            </h3>
+            <ul class="list-disc list-inside text-gray-700 mb-6">
+              <li>Air Conditioner (Ac)</li>
+              <li>Kamar Mandi Dengan Pilihan Air Panas Maupun Air Dingin</li>
+              <li>Shampo Dan Sabun Cair</li>
+              <li>Sandal Khas Villa Pahawang Island Lampung</li>
+              <li>Televisi</li>
+              <li>2 Bed Ukuran 1.5 x 2 M (Max 4 Orang)</li>
+              <li>Meja Dan Kursi Untuk Bersantai Di Villa</li>
+              <li>Handuk</li>
+            </ul>
+          </div>
+
+          <!-- Exlude Fasilitas 2D1N -->
+          <div
+            class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+          >
+            <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+              Exclude Fasilitas
+            </h3>
+            <ul class="list-disc list-inside text-gray-700 mb-6">
+              <li>Makan Diluar Jadwal</li>
+              <li>
+                Kendaraan Menuju MP (Rp. 450.000 / Mobil Jika Tamu Minta Jemput)
+              </li>
+              <li>Team Building Games (Rp. 2.500.000)</li>
+              <li>Dokumentasi Drone (Rp. 1.250.000 /Hari)</li>
+              <li>Extra Bed Villa Lombok (Rp. 150.000 /Bed)</li>
+              <li>Barbeque (Rp. 80.000 /Orang)</li>
+              <li>Music (Rp. 2.500.000)</li>
+              <li>Water Sport Banana Boat (Rp. 30.000)</li>
+              <li>Water Sport Donat Boat (Rp. 35.000)</li>
+            </ul>
+          </div>
+
+          <!-- Rencana Perjalanan 2D1N Trip -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Rencana Perjalanan (2D1N Trip)
+            </h2>
+            <h3 class="text-2xl font-bold text-indigo-700 mb-3">Hari Ke 1</h3>
+            <ol class="relative border-l border-indigo-200 ml-4 md:ml-0">
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-map-pin text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  08:00 - 08:30 WIB
+                  <span
+                    class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-3"
+                    >Titik Kumpul (Dermaga Ketapang)</span
+                  >
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Pembagian alat snorkling dan Persiapan Keberangkatan
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  08:30 - 09:30 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan Menuju Spot Snorkeling
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-mask text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  09:30 - 10:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Persiapan Untuk Snorkeling Di Spot Cukuh Bedil
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-mask text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  10:00 - 11:40 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Snorkeling Di Spot Cukuh Bedil
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  11:40 - 12:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan Menuju Pulau Pahawang Besar
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-utensils text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  12:00 - 14:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  ISHOMA Di Pulau Pahawang Besar (1)
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  14:00 - 14:25 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan Menuju Spot Taman Nemo
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-mask text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  14:25 - 15:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Snorkling Di Spot Taman Nemo
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  15:00 - 15:20 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan Menuju Pulau Pahawang Kecil
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-camera text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  15:20 - 16:45 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Water Sport + Bersantai (Foto-foto) di Pulau Pahawang Kecil
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  16:45 - 17:10 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan Menuju Pulau Pahawang Besar
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-shower text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  17:10 - 18:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Mandi Bilas Dan Bersiap Untuk Makan Malam
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-utensils text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  18:00 - 19:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Makan malam (2)
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-umbrella-beach text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  19:00 - 21:30 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Free Time
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-bacon text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  21:30 - 23:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  BBQ (Jika Memesan)
+                </p>
+              </li>
+            </ol>
+            <h3 class="text-2xl font-bold text-indigo-700 mb-3">Hari Ke 2</h3>
+            <ol class="relative border-l border-indigo-200 ml-4 md:ml-0">
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-shower text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  06:00 - 08:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Mandi Dan Packing Barang Bawaan
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-utensils text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  06:00 - 08:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Makan Pagi (3)
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-umbrella-beach text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  10:00 - 11:30 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Free Time
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-utensils text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  11:30 - 12:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  ISHOMA (Makan Siang) (4)
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  11:40 - 12:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan Menuju Pulau Kelagian
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-umbrella-beach text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  13:00 - 14:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Hoping Island
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  14:00 - 14:30 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan Menuju Dermaga Ketapang
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-shower text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  14:30 - 15:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Mandi Dan Bilas
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-car-side text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  15:00 - 15:30 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Sayonaraaaa
+                </p>
+              </li>
+            </ol>
+          </div>
+          <!-- Paket Lengkap 2 Day One Night End -->
+
+          <!-- Galeri Foto -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 text-center mb-8">
+              Galeri Foto Pulau Pahawang
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <img
+                src="img/pulau pahawang/foto 1.jpg"
+                alt="Pahawang Gallery 1"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="img/pulau pahawang/foto 2.jpg"
+                alt="Pahawang Gallery 2"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="img/pulau pahawang/foto 3.jpg"
+                alt="Pahawang Gallery 3"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="img/pulau pahawang/foto 4.jpg"
+                alt="Pahawang Gallery 4"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="img/pulau pahawang/foto 5.jpg"
+                alt="Pahawang Gallery 5"
+                +
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="img/pulau pahawang/foto 6.jpg"
+                alt="Pahawang Gallery 6"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+            </div>
+          </div>
+
+          <!-- FAQ Section (Destination Specific) -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              FAQ Pulau Pahawang
+            </h2>
+            <div class="space-y-4">
+              <!-- FAQ Item 1 -->
+              <div class="border border-gray-200 rounded-lg overflow-hidden">
+                <button
+                  class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none text-left font-medium text-gray-800"
+                >
+                  <span>Apa yang harus saya bawa untuk trip ke Pahawang?</span>
+                  <i
+                    class="fas fa-chevron-down transform transition-transform duration-300"
+                  ></i>
+                </button>
+                <div class="faq-content hidden p-4 text-gray-600 bg-white">
+                  <p>
+                    Anda disarankan membawa pakaian ganti, handuk, tabir surya,
+                    topi, kacamata hitam, kamera bawah air (jika ada),
+                    perlengkapan mandi, dan uang tunai secukupnya.
+                  </p>
+                </div>
+              </div>
+              <!-- FAQ Item 2 -->
+              <div class="border border-gray-200 rounded-lg overflow-hidden">
+                <button
+                  class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none text-left font-medium text-gray-800"
+                >
+                  <span>Apakah trip ini cocok untuk pemula snorkeling?</span>
+                  <i
+                    class="fas fa-chevron-down transform transition-transform duration-300"
+                  ></i>
+                </button>
+                <div class="faq-content hidden p-4 text-gray-600 bg-white">
+                  <p>
+                    Ya, sangat cocok! Pemandu kami akan memberikan instruksi
+                    dasar dan selalu mendampingi Anda di dalam air. Pelampung
+                    juga disediakan untuk keamanan dan kenyamanan.
+                  </p>
+                </div>
+              </div>
+              <!-- FAQ Item 3 -->
+              <div class="border border-gray-200 rounded-lg overflow-hidden">
+                <button
+                  class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none text-left font-medium text-gray-800"
+                >
+                  <span>Bagaimana cara menuju Dermaga Ketapang?</span>
+                  <i
+                    class="fas fa-chevron-down transform transition-transform duration-300"
+                  ></i>
+                </button>
+                <div class="faq-content hidden p-4 text-gray-600 bg-white">
+                  <p>
+                    Dermaga Ketapang berlokasi sekitar 1,5 - 2 jam perjalanan
+                    dari pusat kota Bandar Lampung. Anda bisa menggunakan
+                    kendaraan pribadi atau sewa mobil. Kami juga bisa membantu
+                    arrange transportasi darat tambahan (dengan biaya tambahan).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial Section (Destination Specific) -->
+          <div class="bg-white rounded-xl shadow-lg p-8">
+            <h2 class="text-3xl font-semibold text-indigo-700 text-center mb-8">
+              Testimoni Pengunjung
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="bg-indigo-50 p-6 rounded-xl shadow-md">
+                <p class="text-gray-700 italic mb-3">
+                  "Pahawang sangat indah! Terumbu karangnya sehat dan ikannya
+                  banyak. Anak-anak saya sangat menikmati snorkelingnya. Pemandu
+                  dari Triipnesia juga sangat sabar."
+                </p>
+                <p class="font-semibold text-indigo-700">- Keluarga Pratama</p>
+              </div>
+              <div class="bg-indigo-50 p-6 rounded-xl shadow-md">
+                <p class="text-gray-700 italic mb-3">
+                  "Pengalaman yang tak terlupakan di Pasir Timbul. Semua diatur
+                  dengan baik, mulai dari transportasi hingga makanan.
+                  Benar-benar trip yang effortless!"
+                </p>
+                <p class="font-semibold text-indigo-700">- Lia & Teman-teman</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pulau Tegal Mas Detail Page -->
+      <section id="tegal-mas-detail" class="page-section py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <button
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full mb-8 transition duration-300"
+            onclick="showPage('destinations')"
+          >
+            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Destinasi
+          </button>
+          <h1 class="text-4xl font-bold text-indigo-800 text-center mb-8">
+            Pulau Tegal Mas Lampung
+          </h1>
+
+          <!-- Hero Image/Banner -->
+          <div class="w-full h-96 rounded-xl overflow-hidden shadow-lg mb-12">
+            <img
+              src="https://placehold.co/1200x600/6D28D9/FFFFFF?text=Tegal+Mas+Banner"
+              alt="Pulau Tegal Mas Banner"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Overview -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-4">
+              Resort Eksotis Ala Maldives di Lampung
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Pulau Tegal Mas menawarkan pengalaman liburan ala Maldives dengan
+              villa-villa di atas air, jembatan kayu yang estetik, dan
+              pemandangan laut yang jernih. Cocok untuk bersantai, berfoto, dan
+              menikmati keindahan alam.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              Nikmati fasilitas resort yang lengkap, spot snorkeling yang indah,
+              serta suasana yang tenang dan damai. Pulau ini adalah pilihan
+              sempurna untuk liburan romantis atau keluarga.
+            </p>
+          </div>
+
+          <!-- Fasilitas -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Fasilitas yang Termasuk
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-ship text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Transportasi laut PP (dermaga)</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-bed text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Akses ke area resort</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-swimmer text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Spot snorkeling di sekitar pulau</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-camera-retro text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Banyak spot foto Instagramable</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-umbrella-beach text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Area pantai pribadi</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paket Lengkap -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Pilihan Paket Wisata
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Paket 1 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Paket One Day Trip Tegal Mas
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-3xl mb-4">
+                  Rp. 450.000<span class="text-xl font-normal">/orang</span>
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>Transportasi PP (Dermaga Ketapang)</li>
+                  <li>Tiket masuk & akses resort Tegal Mas</li>
+                  <li>Makan siang</li>
+                  <li>Alat snorkeling dasar</li>
+                  <li>Pemandu lokal</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  Pesan Paket Ini
+                </button>
+              </div>
+              <!-- Paket 2 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Paket 2 Hari 1 Malam Tegal Mas
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-3xl mb-4">
+                  Mulai dari Rp. 900.000<span class="text-xl font-normal"
+                    >/orang</span
+                  >
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>Transportasi PP (Dermaga Ketapang)</li>
+                  <li>Akomodasi penginapan (villa/cottage)</li>
+                  <li>Makan 3x</li>
+                  <li>Akses fasilitas resort</li>
+                  <li>Aktivitas snorkeling/kayaking</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  Pesan Paket Ini
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rencana Perjalanan -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Rencana Perjalanan (One Day Trip)
+            </h2>
+            <ol class="relative border-l border-indigo-200 ml-4 md:ml-0">
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-clock text-indigo-600"></i>
+                </span>
+                <h3
+                  class="flex items-center mb-1 text-lg font-semibold text-gray-900"
+                >
+                  08:00 - 09:00 WIB<span
+                    class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-3"
+                    >Titik Kumpul</span
+                  >
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Berkumpul di Dermaga Ketapang.
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-ship text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  09:00 - 09:45 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Perjalanan laut menuju Pulau Tegal Mas.
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-camera-retro text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  09:45 - 12:30 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Tiba di Tegal Mas, explore resort, berfoto, dan bersantai.
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-utensils text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  12:30 - 13:30 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Makan siang di restoran resort.
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-water text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  13:30 - 16:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Bebas beraktivitas: snorkeling, berenang, atau menikmati
+                  pantai.
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-sign-out-alt text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  16:00 - 17:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Persiapan kembali ke Dermaga Ketapang.
+                </p>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Galeri Foto -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 text-center mb-8">
+              Galeri Foto Pulau Tegal Mas
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Tegal+Mas+1"
+                alt="Tegal Mas Gallery 1"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Tegal+Mas+2"
+                alt="Tegal Mas Gallery 2"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Tegal+Mas+3"
+                alt="Tegal Mas Gallery 3"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Tegal+Mas+4"
+                alt="Tegal Mas Gallery 4"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pulau Wayang Detail Page -->
+      <section id="wayang-detail" class="page-section py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <button
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full mb-8 transition duration-300"
+            onclick="showPage('destinations')"
+          >
+            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Destinasi
+          </button>
+          <h1 class="text-4xl font-bold text-indigo-800 text-center mb-8">
+            Pulau Wayang Lampung
+          </h1>
+
+          <!-- Hero Image/Banner -->
+          <div class="w-full h-96 rounded-xl overflow-hidden shadow-lg mb-12">
+            <img
+              src="https://placehold.co/1200x600/6D28D9/FFFFFF?text=Wayang+Banner"
+              alt="Pulau Wayang Banner"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Overview -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-4">
+              Surga Tersembunyi untuk Pecinta Diving
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Pulau Wayang dikenal dengan keindahan alam bawah lautnya yang
+              masih perawan dan belum banyak terjamah. Ini adalah destinasi
+              impian bagi para penyelam dan penggemar snorkeling yang mencari
+              ketenangan dan kekayaan biota laut.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              Terumbu karang yang sehat dan beragam jenis ikan menjadikan setiap
+              penyelaman di sini pengalaman yang luar biasa. Suasana pulau yang
+              tenang juga cocok untuk relaksasi.
+            </p>
+          </div>
+
+          <!-- Fasilitas -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Fasilitas yang Termasuk
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-ship text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Transportasi kapal PP (dermaga)</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-diving text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Alat snorkeling/diving (opsional)</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-utensils text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Makan siang</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-walking text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Pemandu lokal</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-camera-retro text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Dokumentasi</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paket Lengkap -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Pilihan Paket Wisata
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Paket 1 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Paket One Day Explore Wayang
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-3xl mb-4">
+                  Rp. 380.000<span class="text-xl font-normal">/orang</span>
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>Transportasi PP dari dermaga</li>
+                  <li>Makan siang</li>
+                  <li>Pemandu</li>
+                  <li>Spot snorkeling/diving terbaik</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  Pesan Paket Ini
+                </button>
+              </div>
+              <!-- Paket 2 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Paket Diving Experience Wayang
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-3xl mb-4">
+                  Mulai dari Rp. 850.000<span class="text-xl font-normal"
+                    >/orang</span
+                  >
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>Transportasi PP dari dermaga</li>
+                  <li>Peralatan diving lengkap</li>
+                  <li>Dive master berpengalaman</li>
+                  <li>2x dive (atau sesuai kesepakatan)</li>
+                  <li>Makan siang</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  Pesan Paket Ini
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Galeri Foto -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 text-center mb-8">
+              Galeri Foto Pulau Wayang
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Wayang+1"
+                alt="Wayang Gallery 1"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Wayang+2"
+                alt="Wayang Gallery 2"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Wayang+3"
+                alt="Wayang Gallery 3"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Wayang+4"
+                alt="Wayang Gallery 4"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kiluan Dolphin Detail Page -->
+      <section id="kiluan-detail" class="page-section py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <button
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full mb-8 transition duration-300"
+            onclick="showPage('destinations')"
+          >
+            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Destinasi
+          </button>
+          <h1 class="text-4xl font-bold text-indigo-800 text-center mb-8">
+            Kiluan Dolphin Lampung
+          </h1>
+
+          <!-- Hero Image/Banner -->
+          <div class="w-full h-96 rounded-xl overflow-hidden shadow-lg mb-12">
+            <img
+              src="https://placehold.co/1200x600/6D28D9/FFFFFF?text=Kiluan+Banner"
+              alt="Kiluan Dolphin Banner"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Overview -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-4">
+              Saksikan Tarian Lumba-Lumba Liar
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Teluk Kiluan adalah rumah bagi ribuan lumba-lumba hidung botol dan
+              lumba-lumba paruh panjang. Rasakan sensasi tak terlupakan
+              menyaksikan mereka melompat dan berenang bebas di habitat aslinya
+              saat matahari terbit.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              Selain lumba-lumba, Anda juga bisa menikmati keindahan Laguna
+              Gayau dan keheningan suasana pedesaan pesisir yang asri.
+            </p>
+          </div>
+
+          <!-- Fasilitas -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Fasilitas yang Termasuk
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-truck-pickup text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Transportasi lokal (ojek/sewa mobil jika dari Meeting Point)
+                </p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-dolly text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Perahu jukung untuk spotting lumba-lumba
+                </p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-utensils text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Makan pagi/siang (tergantung paket)</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-walking text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Pemandu lokal</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-water text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Kunjungan ke Laguna Gayau</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paket Lengkap -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Pilihan Paket Wisata
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Paket 1 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Paket One Day Lumba-lumba
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-3xl mb-4">
+                  Rp. 400.000<span class="text-xl font-normal">/orang</span>
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>Transportasi perahu jukung</li>
+                  <li>Tiket masuk & spotting lumba-lumba</li>
+                  <li>Makan pagi</li>
+                  <li>Pemandu</li>
+                  <li>Kunjungan Laguna Gayau</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  Pesan Paket Ini
+                </button>
+              </div>
+              <!-- Paket 2 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Paket 2 Hari 1 Malam Kiluan
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-3xl mb-4">
+                  Mulai dari Rp. 800.000<span class="text-xl font-normal"
+                    >/orang</span
+                  >
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>Transportasi PP dari Meeting Point</li>
+                  <li>Akomodasi penginapan (homestay)</li>
+                  <li>Makan 3x</li>
+                  <li>Spotting lumba-lumba</li>
+                  <li>Trekking Laguna Gayau</li>
+                  <li>Tour desa lokal</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  Pesan Paket Ini
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rencana Perjalanan -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Rencana Perjalanan (One Day Trip)
+            </h2>
+            <ol class="relative border-l border-indigo-200 ml-4 md:ml-0">
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-clock text-indigo-600"></i>
+                </span>
+                <h3
+                  class="flex items-center mb-1 text-lg font-semibold text-gray-900"
+                >
+                  04:00 - 05:00 WIB<span
+                    class="bg-indigo-100 text-indigo-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-3"
+                    >Titik Kumpul</span
+                  >
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Berkumpul di dermaga Kiluan, persiapan berangkat.
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-dolphin text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  05:00 - 08:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Berlayar dengan jukung untuk spotting lumba-lumba di Teluk
+                  Kiluan.
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-water text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  08:00 - 10:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Kunjungan ke Laguna Gayau dan berenang di kolam alami.
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-utensils text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  10:00 - 11:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Makan pagi/siang di homestay lokal.
+                </p>
+              </li>
+              <li class="mb-8 ml-6">
+                <span
+                  class="absolute flex items-center justify-center w-6 h-6 bg-indigo-200 rounded-full -left-3 ring-8 ring-white"
+                >
+                  <i class="fas fa-sign-out-alt text-indigo-600"></i>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">
+                  11:00 WIB
+                </h3>
+                <p
+                  class="block mb-2 text-sm font-normal leading-none text-gray-500"
+                >
+                  Selesai trip, kembali ke meeting point.
+                </p>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Galeri Foto -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 text-center mb-8">
+              Galeri Foto Kiluan Dolphin
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Kiluan+1"
+                alt="Kiluan Gallery 1"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Kiluan+2"
+                alt="Kiluan Gallery 2"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Kiluan+3"
+                alt="Kiluan Gallery 3"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Kiluan+4"
+                alt="Kiluan Gallery 4"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pesisir Barat Detail Page -->
+      <section id="pesisir-barat-detail" class="page-section py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <button
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full mb-8 transition duration-300"
+            onclick="showPage('destinations')"
+          >
+            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Destinasi
+          </button>
+          <h1 class="text-4xl font-bold text-indigo-800 text-center mb-8">
+            Pesisir Barat Lampung
+          </h1>
+
+          <!-- Hero Image/Banner -->
+          <div class="w-full h-96 rounded-xl overflow-hidden shadow-lg mb-12">
+            <img
+              src="https://placehold.co/1200x600/6D28D9/FFFFFF?text=Pesisir+Barat+Banner"
+              alt="Pesisir Barat Banner"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Overview -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-4">
+              Surga Peselancar dan Keindahan Alam yang Memukau
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Pesisir Barat Lampung, khususnya daerah Krui, adalah destinasi
+              kelas dunia bagi para peselancar dengan ombaknya yang konsisten
+              dan menantang. Selain ombak, area ini juga menawarkan keindahan
+              pantai yang masih alami dan suasana yang tenang.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              Nikmati senja yang memukau, jelajahi desa-desa nelayan lokal, atau
+              sekadar bersantai di tepi pantai yang sepi. Pesisir Barat adalah
+              permata tersembunyi bagi pecinta petualangan dan ketenangan.
+            </p>
+          </div>
+
+          <!-- Fasilitas -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Fasilitas yang Termasuk
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-car-side text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Transportasi lokal (jika dalam paket)
+                </p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-surf-board text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Spot surfing terbaik</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-bed text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Akomodasi (Homestay/Penginapan)</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-utensils text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Makan (tergantung paket)</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-map-marked-alt text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Pemandu/Surf Guide (opsional)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paket Lengkap -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Pilihan Paket Wisata
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Paket 1 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Paket Explore Pantai Pesisir Barat
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-3xl mb-4">
+                  Rp. 700.000<span class="text-xl font-normal">/orang</span>
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>Akomodasi 2D1N (Homestay/Guest House)</li>
+                  <li>Makan 3x</li>
+                  <li>Transportasi lokal</li>
+                  <li>
+                    Kunjungan ke beberapa pantai (Tanjung Setia, Pantai Mandiri)
+                  </li>
+                  <li>Menikmati sunset</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  Pesan Paket Ini
+                </button>
+              </div>
+              <!-- Paket 2 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Paket Surf Trip Krui (3D2N)
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-3xl mb-4">
+                  Mulai dari Rp. 1.500.000<span class="text-xl font-normal"
+                    >/orang</span
+                  >
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>Akomodasi 3D2N (Surf Camp/Homestay)</li>
+                  <li>Makan 6x</li>
+                  <li>Transportasi ke surf spot</li>
+                  <li>Surf Guide (opsional)</li>
+                  <li>Akses ke fasilitas camp</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  Pesan Paket Ini
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Galeri Foto -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 text-center mb-8">
+              Galeri Foto Pesisir Barat
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Pesisir+Barat+1"
+                alt="Pesisir Barat Gallery 1"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Pesisir+Barat+2"
+                alt="Pesisir Barat Gallery 2"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Pesisir+Barat+3"
+                alt="Pesisir Barat Gallery 3"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Pesisir+Barat+4"
+                alt="Pesisir Barat Gallery 4"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Danau Ranau Detail Page -->
+      <section id="danau-ranau-detail" class="page-section py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <button
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full mb-8 transition duration-300"
+            onclick="showPage('destinations')"
+          >
+            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Destinasi
+          </button>
+          <h1 class="text-4xl font-bold text-indigo-800 text-center mb-8">
+            Danau Ranau Lampung Barat
+          </h1>
+
+          <!-- Hero Image/Banner -->
+          <div class="w-full h-96 rounded-xl overflow-hidden shadow-lg mb-12">
+            <img
+              src="https://placehold.co/1200x600/6D28D9/FFFFFF?text=Danau+Ranau+Banner"
+              alt="Danau Ranau Banner"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Overview -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-4">
+              Keindahan Danau Vulkanik Terbesar Kedua di Sumatera
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Danau Ranau adalah danau vulkanik besar yang membelah dua
+              provinsi, Sumatera Selatan dan Lampung. Dikelilingi oleh
+              perbukitan hijau dan Gunung Seminung, danau ini menawarkan
+              pemandangan yang spektakuler, udara sejuk, dan suasana pedesaan
+              yang damai.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              Cocok untuk aktivitas air, memancing, atau sekadar menikmati
+              keindahan alam dari pinggir danau. Ada juga pulau kecil di tengah
+              danau bernama Pulau Marisa dengan pemandian air panas alami.
+            </p>
+          </div>
+
+          <!-- Fasilitas -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Fasilitas yang Termasuk
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-car text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Transportasi lokal</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-water text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Perahu untuk keliling danau</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-utensils text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">Makan (tergantung paket)</p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-hiking text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Aktivitas trekking ringan (opsional)
+                </p>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-hot-tub text-2xl text-indigo-500"></i>
+                <p class="text-gray-700">
+                  Akses pemandian air panas (opsional)
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paket Lengkap -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 mb-6">
+              Pilihan Paket Wisata
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Paket 1 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Paket Jelajah Danau Ranau (2D1N)
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-3xl mb-4">
+                  Rp. 600.000<span class="text-xl font-normal">/orang</span>
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>Akomodasi 2D1N (Homestay/Hotel lokal)</li>
+                  <li>Makan 3x</li>
+                  <li>Sewa perahu keliling danau</li>
+                  <li>Kunjungan ke Pulau Marisa (pemandian air panas)</li>
+                  <li>Pemandu lokal</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  Pesan Paket Ini
+                </button>
+              </div>
+              <!-- Paket 2 -->
+              <div
+                class="border border-indigo-200 rounded-xl p-6 hover:shadow-xl transition duration-300"
+              >
+                <h3 class="text-2xl font-bold text-indigo-800 mb-3">
+                  Paket Petualangan Danau Ranau (3D2N)
+                </h3>
+                <p class="text-indigo-600 font-extrabold text-3xl mb-4">
+                  Mulai dari Rp. 1.100.000<span class="text-xl font-normal"
+                    >/orang</span
+                  >
+                </p>
+                <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+                  <li>Akomodasi 3D2N</li>
+                  <li>Makan 6x</li>
+                  <li>Sewa perahu & aktivitas air</li>
+                  <li>Trekking ringan ke spot pemandangan</li>
+                  <li>Kunjungan ke beberapa objek wisata sekitar danau</li>
+                </ul>
+                <button
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition duration-300"
+                >
+                  Pesan Paket Ini
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Galeri Foto -->
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h2 class="text-3xl font-semibold text-indigo-700 text-center mb-8">
+              Galeri Foto Danau Ranau
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Ranau+1"
+                alt="Danau Ranau Gallery 1"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Ranau+2"
+                alt="Danau Ranau Gallery 2"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Ranau+3"
+                alt="Danau Ranau Gallery 3"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+              <img
+                src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Ranau+4"
+                alt="Danau Ranau Gallery 4"
+                class="w-full h-auto rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition duration-300"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- General FAQ Section -->
+      <section id="faq-section" class="page-section py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold text-indigo-800 text-center mb-12">
+            Pertanyaan Umum (FAQ)
+          </h2>
+          <button
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full mb-8 transition duration-300"
+            onclick="showPage('home')"
+          >
+            <i class="fas fa-arrow-left mr-2"></i> Kembali Ke Beranda
+          </button>
+          <div class="max-w-3xl mx-auto space-y-6">
+            <!-- FAQ Item 1 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-6 bg-indigo-50 hover:bg-indigo-100 focus:outline-none text-left font-semibold text-indigo-800"
+              >
+                <span>Bagaimana cara memesan paket perjalanan?</span>
+                <i
+                  class="fas fa-chevron-down transform transition-transform duration-300"
+                ></i>
+              </button>
+              <div
+                class="faq-content hidden p-6 text-gray-700 bg-white leading-relaxed"
+              >
+                <p>
+                  Anda dapat memesan paket perjalanan melalui website kami
+                  dengan mengklik tombol "Pesan Sekarang" pada setiap detail
+                  destinasi, atau langsung menghubungi customer service kami via
+                  WhatsApp atau email.
+                </p>
+              </div>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-6 bg-indigo-50 hover:bg-indigo-100 focus:outline-none text-left font-semibold text-indigo-800"
+              >
+                <span>Apa saja metode pembayaran yang diterima?</span>
+                <i
+                  class="fas fa-chevron-down transform transition-transform duration-300"
+                ></i>
+              </button>
+              <div
+                class="faq-content hidden p-6 text-gray-700 bg-white leading-relaxed"
+              >
+                <p>
+                  Kami menerima pembayaran melalui transfer bank (BCA, Mandiri)
+                  dan e-wallet (OVO, GoPay). Detail pembayaran akan diberikan
+                  setelah konfirmasi pemesanan.
+                </p>
+              </div>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-6 bg-indigo-50 hover:bg-indigo-100 focus:outline-none text-left font-semibold text-indigo-800"
+              >
+                <span>Apakah ada diskon untuk pemesanan grup besar?</span>
+                <i
+                  class="fas fa-chevron-down transform transition-transform duration-300"
+                ></i>
+              </button>
+              <div
+                class="faq-content hidden p-6 text-gray-700 bg-white leading-relaxed"
+              >
+                <p>
+                  Ya, kami menawarkan diskon khusus untuk pemesanan grup besar
+                  (minimal 10 orang). Silakan hubungi kami untuk mendapatkan
+                  penawaran terbaik.
+                </p>
+              </div>
+            </div>
+            <!-- FAQ Item 4 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-6 bg-indigo-50 hover:bg-indigo-100 focus:outline-none text-left font-semibold text-indigo-800"
+              >
+                <span>Bisakah saya mengajukan paket kustom?</span>
+                <i
+                  class="fas fa-chevron-down transform transition-transform duration-300"
+                ></i>
+              </button>
+              <div
+                class="faq-content hidden p-6 text-gray-700 bg-white leading-relaxed"
+              >
+                <p>
+                  Tentu saja! Kami sangat terbuka untuk membuat paket perjalanan
+                  yang disesuaikan dengan kebutuhan, preferensi, dan anggaran
+                  Anda. Silakan diskusikan rencana Anda dengan tim kami.
+                </p>
+              </div>
+            </div>
+            <!-- FAQ Item 5 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+              <button
+                class="faq-toggle w-full flex justify-between items-center p-6 bg-indigo-50 hover:bg-indigo-100 focus:outline-none text-left font-semibold text-indigo-800"
+              >
+                <span>Apakah harga sudah termasuk tiket pesawat/kereta?</span>
+                <i
+                  class="fas fa-chevron-down transform transition-transform duration-300"
+                ></i>
+              </button>
+              <div
+                class="faq-content hidden p-6 text-gray-700 bg-white leading-relaxed"
+              >
+                <p>
+                  Harga paket yang tertera tidak termasuk tiket transportasi
+                  menuju Lampung (pesawat/kereta/bus). Harga paket biasanya
+                  dimulai dari titik meeting point di Lampung.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="contact-footer" class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- About Triipnesia -->
+        <div>
+          <h3 class="text-xl font-bold text-indigo-400 mb-4">
+            Tentang Triipnesia
+          </h3>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Triipnesia adalah penyedia layanan tour & travel terpercaya yang
+            fokus pada eksplorasi keindahan alam dan budaya Lampung. Kami
+            berkomitmen memberikan pengalaman liburan terbaik dengan pelayanan
+            prima.
+          </p>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-xl font-bold text-indigo-400 mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="#home"
+                class="text-gray-400 hover:text-white transition duration-300"
+                onclick="showPage('home')"
+                >Beranda</a
+              >
+            </li>
+            <li>
+              <a
+                href="#destinations"
+                class="text-gray-400 hover:text-white transition duration-300"
+                onclick="showPage('destinations')"
+                >Destinasi</a
+              >
+            </li>
+            <li>
+              <a
+                href="#faq-section"
+                class="text-gray-400 hover:text-white transition duration-300"
+                onclick="showPage('faq-section')"
+                >FAQ</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact-footer"
+                class="text-gray-400 hover:text-white transition duration-300"
+                >Kontak Kami</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-xl font-bold text-indigo-400 mb-4">Hubungi Kami</h3>
+          <p class="text-gray-400 flex items-center mb-2">
+            <i class="fas fa-map-marker-alt mr-1"></i> Lampung, Indonesia
+          </p>
+          <p class="text-gray-400 flex items-center mb-2">
+            <i class="fab fa-whatsapp mr-1"></i> +62 812-3456-7890
+          </p>
+          <p class="text-gray-400 flex items-center mb-4">
+            <i class="fas fa-envelope mr-1"></i> yozicun@gmail.com
+          </p>
+          <p class="text-gray-400 flex items-center mb-4">
+            <i class="fab fa-instagram mr-1"></i> Triipnesia
+          </p>
+          <div class="flex space-x-4">
+            <a
+              href="https://youtube.com/@wisatalampungku63"
+              class="text-gray-400 hover:text-white transition duration-300 text-2xl"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/triipnesia"
+              target="_blank"
+              class="text-gray-400 hover:text-white transition duration-300 text-2xl"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="https://wa.me/6281270919808?text=Hallo%20kak%20salam%20kenal.%20Mau%20tanya%20trip%20wisata%20lampung%20?"
+              target="_blank"
+              class="text-gray-400 hover:text-white transition duration-300 text-2xl"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="text-center text-gray-500 text-sm mt-10 border-t border-gray-700 pt-8"
+      >
+        &copy; 2025 Ilhamd Adzany.<br />Hak Cipta Dilindungi Undang-Undang.
+      </div>
+    </footer>
+
+    <script>
+      // JavaScript for managing page visibility and mobile menu
+      document.addEventListener("DOMContentLoaded", () => {
+        const pages = document.querySelectorAll(".page-section");
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const faqToggles = document.querySelectorAll(".faq-toggle");
+
+        // Function to show a specific page and hide others
+        window.showPage = (id) => {
+          pages.forEach((page) => {
+            if (page.id === id) {
+              page.style.display = "block";
+              window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top of the new page
+            } else {
+              page.style.display = "none";
+            }
+          });
+        };
+
+        // Toggle mobile menu visibility
+        window.toggleMobileMenu = () => {
+          mobileMenu.classList.toggle("hidden");
+        };
+
+        mobileMenuButton.addEventListener("click", toggleMobileMenu);
+
+        // Accordion functionality for FAQs
+        faqToggles.forEach((toggle) => {
+          toggle.addEventListener("click", () => {
+            const content = toggle.nextElementSibling; // The FAQ answer div
+            const icon = toggle.querySelector(".fa-chevron-down");
+
+            content.classList.toggle("hidden");
+            icon.classList.toggle("rotate-180"); // Rotate icon when open
+          });
+        });
+
+        // Handle initial page load based on hash or default to home
+        const hash = window.location.hash.substring(1); // Remove '#'
+        if (hash && document.getElementById(hash)) {
+          showPage(hash);
+        } else {
+          showPage("home");
+        }
+
+        // Update URL hash when navigating to a section, without reloading
+        document.querySelectorAll("nav a").forEach((link) => {
+          link.addEventListener("click", (event) => {
+            const targetId = event.target.getAttribute("href").substring(1);
+            if (targetId) {
+              // Check if it's an internal link
+              event.preventDefault(); // Prevent default hash behavior
+              history.pushState(null, "", "#" + targetId); // Update URL hash
+              // For the contact link in the nav, scroll to footer
+              if (targetId === "contact-footer") {
+                const footer = document.getElementById("contact-footer");
+                footer.scrollIntoView({ behavior: "smooth" });
+              } else {
+                showPage(targetId);
+              }
+            }
+          });
+        });
+
+        // Ensure the current page is shown if navigating back/forward using browser buttons
+        window.addEventListener("popstate", () => {
+          const currentHash = window.location.hash.substring(1);
+          if (currentHash && document.getElementById(currentHash)) {
+            showPage(currentHash);
+          } else {
+            showPage("home");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
